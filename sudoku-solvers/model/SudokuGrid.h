@@ -19,6 +19,7 @@ public:
     int& operator() (size_t row, size_t col);
     int operator() (size_t row, size_t col) const;
 
+    size_t getSize() const { return _n; }
     size_t getBlockIndex(size_t row, size_t col) const;
     std::vector<int> getBlock(size_t blockIndex) const;
     std::vector<int> getRow(size_t row) const;

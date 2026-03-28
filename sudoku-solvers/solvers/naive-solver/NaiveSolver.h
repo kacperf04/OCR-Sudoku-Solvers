@@ -12,7 +12,10 @@ public:
     NaiveSolver(SudokuGrid puzzle, float timeLimit) : Solver(std::move(puzzle), timeLimit) {}
 
     std::optional<SudokuGrid> solve() override;
-    bool isSafe(size_t n, size_t m, int number);
+
+private:
+    std::tuple<size_t, size_t> incrementCoordinates(size_t row, size_t col) const;
+    bool isExcluded(size_t row, size_t col, int value) const;
 };
 
 

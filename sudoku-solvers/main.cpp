@@ -19,10 +19,10 @@ int main() {
 
     SudokuGrid grid(rawGrid9x9);
 
-    vector<int> block = grid.block(8);
+    vector<int> row1 = grid.getCol(8);
     cout << grid;
 
-    for (int i : block) {
+    for (int i : row1) {
         cout << i << " ";
     }
 

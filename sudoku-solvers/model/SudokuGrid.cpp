@@ -57,7 +57,7 @@ int SudokuGrid::operator()(size_t row, size_t col) const {
     return _grid[row*_n + col];
 }
 
-size_t SudokuGrid::blockIndex(size_t row, size_t col) const {
+size_t SudokuGrid::getBlockIndex(size_t row, size_t col) const {
     if (row >= _n || col >= _n) { throw out_of_range("Index out of range."); }
 
     size_t col_n = col / _block_size;
@@ -65,7 +65,7 @@ size_t SudokuGrid::blockIndex(size_t row, size_t col) const {
     return row + col_n;
 }
 
-std::vector<int> SudokuGrid::block(size_t blockIndex) const {
+vector<int> SudokuGrid::getBlock(size_t blockIndex) const {
     if (blockIndex >= _n) { throw out_of_range("Block index out of range."); }
 
     vector<int> block;
@@ -81,6 +81,31 @@ std::vector<int> SudokuGrid::block(size_t blockIndex) const {
 
     return block;
 }
+
+std::vector<int> SudokuGrid::getRow(size_t row) const {
+    if (row >= _n) { throw out_of_range("Row index out of range."); }
+
+    vector<int> rowVector = vector<int>();
+    rowVector.reserve(_n);
+    rowVector.insert(rowVector.end(), _grid.begin() + row * _n, _grid.begin() + row * _n + _n);
+
+    return rowVector;
+}
+
+std::vector<int> SudokuGrid::getCol(size_t col) const {
+    if (col >= _n) { throw out_of_range("Col index out of range"); }
+
+    vector<int> colVetor = vector<int>();
+    colVetor.reserve(_n);
+
+    for (size_t i = 0; i < _n; ++i) {
+        colVetor.insert(colVetor.end(), _grid[i * _n + col]);
+    }
+
+    return colVetor;
+}
+
+
 
 
 

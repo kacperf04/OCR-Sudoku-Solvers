@@ -16,8 +16,11 @@ public:
     explicit SudokuGrid(const std::vector<std::vector<int>>& grid);
 
     friend std::ostream& operator<< (std::ostream& os, const SudokuGrid& grid);
-    int& operator() (size_t n, size_t m);
-    int operator() (size_t n, size_t m) const;
+    int& operator() (size_t row, size_t col);
+    int operator() (size_t row, size_t col) const;
+
+    size_t blockIndex(size_t row, size_t col) const;
+    std::vector<int> block(size_t blockIndex) const;
 };
 
 

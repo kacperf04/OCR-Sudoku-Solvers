@@ -18,7 +18,13 @@ int main() {
     };
 
     SudokuGrid grid(rawGrid9x9);
+
+    vector<int> block = grid.block(8);
     cout << grid;
+
+    for (int i : block) {
+        cout << i << " ";
+    }
 
     return 0;
 }

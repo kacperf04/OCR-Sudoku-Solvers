@@ -9,7 +9,7 @@
 
 class NaiveSolver : public Solver {
 public:
-    NaiveSolver(SudokuGrid puzzle, float timeLimit) : Solver(std::move(puzzle), timeLimit) {}
+    explicit NaiveSolver(SudokuGrid puzzle) : Solver(std::move(puzzle)) {}
 
     std::optional<SudokuGrid> solve() override;
 

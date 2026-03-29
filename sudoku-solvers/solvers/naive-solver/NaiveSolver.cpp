@@ -15,7 +15,6 @@ std::optional<SudokuGrid> NaiveSolver::solve() {
     return {};
 }
 
-
 std::tuple<size_t, size_t> NaiveSolver::isEmpty() const {
     for (size_t i = 0; i < _puzzle.getSize() * _puzzle.getSize(); ++i) {
         size_t row = i / _puzzle.getSize();

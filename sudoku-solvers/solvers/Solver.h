@@ -12,13 +12,13 @@
 class Solver {
 protected:
     SudokuGrid _puzzle;
-    float _timeLimit;
 
 public:
-    Solver(SudokuGrid puzzle, float timeLimit) : _puzzle(std::move(puzzle)), _timeLimit(timeLimit) {}
+    Solver(SudokuGrid puzzle) : _puzzle(std::move(puzzle)) {}
     virtual ~Solver() = default;
 
     virtual std::optional<SudokuGrid> solve() = 0;
+    virtual void benchmark();
 };
 
 

@@ -20,13 +20,9 @@ int main() {
 
     SudokuGrid grid(rawGrid9x9);
 
-    NaiveSolver ns(grid, 1000.);
+    NaiveSolver ns(grid);
 
-    auto solvedNaive = ns.solve();
-
-    if (solvedNaive.has_value()) {
-        cout << *solvedNaive;
-    }
+    ns.benchmark();
 
     return 0;
 }

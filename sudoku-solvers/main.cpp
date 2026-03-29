@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "model/SudokuGrid.h"
+#include "solvers/naive-solver/NaiveSolver.h"
 
 using namespace std;
 
@@ -19,11 +20,12 @@ int main() {
 
     SudokuGrid grid(rawGrid9x9);
 
-    vector<int> row1 = grid.getCol(8);
-    cout << grid;
+    NaiveSolver ns(grid, 1000.);
 
-    for (int i : row1) {
-        cout << i << " ";
+    auto solvedNaive = ns.solve();
+
+    if (solvedNaive.has_value()) {
+        cout << *solvedNaive;
     }
 
     return 0;

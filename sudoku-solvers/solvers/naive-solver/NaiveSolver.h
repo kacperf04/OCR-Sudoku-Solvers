@@ -14,8 +14,11 @@ public:
     std::optional<SudokuGrid> solve() override;
 
 private:
-    std::tuple<size_t, size_t> incrementCoordinates(size_t row, size_t col) const;
+    std::tuple<size_t, size_t> isEmpty() const;
     bool isExcluded(size_t row, size_t col, int value) const;
+    bool backtrack();
+
+
 };
 
 

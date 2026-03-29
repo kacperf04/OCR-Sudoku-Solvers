@@ -60,9 +60,10 @@ int SudokuGrid::operator()(size_t row, size_t col) const {
 size_t SudokuGrid::getBlockIndex(size_t row, size_t col) const {
     if (row >= _n || col >= _n) { throw out_of_range("Index out of range."); }
 
-    size_t col_n = col / _block_size;
+    size_t block_row = row / _block_size;
+    size_t block_col = col / _block_size;
 
-    return row + col_n;
+    return block_row * _block_size + block_col;
 }
 
 vector<int> SudokuGrid::getBlock(size_t blockIndex) const {
@@ -71,12 +72,13 @@ vector<int> SudokuGrid::getBlock(size_t blockIndex) const {
     vector<int> block;
     block.reserve(_n);
 
-    size_t blockRow = blockIndex / _block_size;
-    size_t blockCol = blockIndex % _block_size;
-    size_t start = _n * blockRow * _block_size + blockCol * _block_size;
+    size_t startRow = (blockIndex / _block_size) * _block_size;
+    size_t startCol = (blockIndex % _block_size) * _block_size;
 
     for (size_t i = 0; i < _block_size; ++i) {
-        block.insert(block.end(), &_grid[start + i * _n], &_grid[start + i * _n + _block_size]);
+        for (size_t j = 0; j < _block_size; ++j) {
+            block.push_back((*this)(startRow + i, startCol + j));
+        }
     }
 
     return block;

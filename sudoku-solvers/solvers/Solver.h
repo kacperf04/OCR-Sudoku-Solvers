@@ -7,7 +7,7 @@
 #include <iostream>
 #include <optional>
 
-#include "../model/SudokuGrid.h"
+#include "../model/SudokuGrid/SudokuGrid.h"
 
 class Solver {
 protected:

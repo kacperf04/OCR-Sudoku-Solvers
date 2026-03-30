@@ -1,7 +1,9 @@
 #include <iostream>
 
-#include "model/SudokuGrid.h"
+#include "model/Proposition/Proposition.h"
+#include "model/SudokuGrid/SudokuGrid.h"
 #include "solvers/naive-solver/NaiveSolver.h"
+#include "solvers/sat-solver/SudokuCNF.h"
 
 using namespace std;
 
@@ -23,6 +25,10 @@ int main() {
     NaiveSolver ns(grid);
 
     ns.benchmark();
+
+    SudokuCNF cnf(grid);
+    auto p = cnf.test();
+    cout << "a";
 
     return 0;
 }
